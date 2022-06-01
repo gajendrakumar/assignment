@@ -18,7 +18,7 @@ resource "aws_launch_configuration" "ecs-example-launchconfig" {
 
 resource "aws_autoscaling_group" "ecs-example-autoscaling" {
   name                 = "ecs-example-autoscaling"
-  vpc_zone_identifier  = [aws_subnet.main-public-1.id, aws_subnet.main-public-2.id]
+  vpc_zone_identifier  = [aws_subnet.rearc-public-1.id, aws_subnet.rearc-public-2.id]
   launch_configuration = aws_launch_configuration.ecs-example-launchconfig.name
   min_size             = 1
   max_size             = 1
@@ -29,31 +29,25 @@ resource "aws_autoscaling_group" "ecs-example-autoscaling" {
   }
 }
 
-# Creates a log group for the ECS cluster, which allows the output of a task to be
-# logged and reviewed. This can be helpful for debugging purposes if a unexpected
-# issue arises.
+# Creates a log group for the ECS cluster
 
 resource "aws_cloudwatch_log_group" "rearc-log-group" {
   name = "rearc-log-group"
 }
 
-# The Data block below allows information about the ECR repository created in phase one
-# to be accessible within phase two - in this case, passing the correct Docker image
-# into the container and task definitions below.
-
-data "aws_ecr_repository" "rearc-container-repo" {
+# creating ecr repository
+resource "aws_ecr_repository" "rearc-container-repo" {
   name = "rearc-container-repo"
 }
 
-# The task and container definitions below are given the ECS cluster to offer instructions 
-# on how to deploy the Docker container used in this project.
+# The task and container definitions
 
 resource "aws_ecs_task_definition" "rearc-task-definition" {
   family = "rearc-task-definition"
   container_definitions = jsonencode([
     {
       "name": "rearc-container-definition",
-      "image": "${data.aws_ecr_repository.rearc-container-repo.repository_url}:latest",
+      "image": "${aws_ecr_repository.rearc-container-repo.repository_url}:latest",
       "essential": true,
       "memoryReservation": 128
       "portMappings": [
@@ -67,7 +61,7 @@ resource "aws_ecs_task_definition" "rearc-task-definition" {
         "logDriver": "awslogs",
         "options": {
           "awslogs-group": "${aws_cloudwatch_log_group.rearc-log-group.name}"
-          "awslogs-region": "${var.aws_region}"
+          "awslogs-region": "${var.AWS_REGION}"
           "awslogs-stream-prefix": "ecs"
         }
       }
@@ -118,7 +112,7 @@ resource "aws_elb" "myapp-elb" {
   connection_draining         = true
   connection_draining_timeout = 400
 
-  subnets         = [aws_subnet.main-public-1.id, aws_subnet.main-public-2.id]
+  subnets         = [aws_subnet.rearc-public-1.id, aws_subnet.rearc-public-2.id]
   security_groups = [aws_security_group.myapp-elb-securitygroup.id]
 
   tags = {

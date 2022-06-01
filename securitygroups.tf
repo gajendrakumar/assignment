@@ -1,5 +1,5 @@
 resource "aws_security_group" "ecs-securitygroup" {
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = aws_vpc.rearc.id
   name        = "ecs"
   description = "security group for ecs"
   egress {
@@ -27,7 +27,7 @@ resource "aws_security_group" "ecs-securitygroup" {
 }
 
 resource "aws_security_group" "myapp-elb-securitygroup" {
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = aws_vpc.rearc.id
   name        = "myapp-elb"
   description = "security group for ecs"
   egress {
