@@ -43,7 +43,7 @@ Once docker container started to run , when we hit secret_word request url , we 
 
 4. How to apply execute the code and achieve task:
 
-    Its very simple . Just trigger the jenkins rearch_docker_upload with will build first and upload docker image to ecr and then it trigger rearch_docker_app job
+    Its very simple . Just trigger the jenkins rearch_docker_upload. This will build first and upload docker image to ecr and then it trigger rearch_docker_app job
     
 
 PS : 
