@@ -36,7 +36,9 @@ Once docker container started to run , when we hit secret_word request url , we 
 3. Prerequisites:
 
     AWS CLI to to installed 
+    
     Install terraform 
+    
     configure AWS access key and secret key in the system path (.aws/credentials file)
 
 4. How to apply execute the code and achieve task:
