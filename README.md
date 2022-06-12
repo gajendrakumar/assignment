@@ -14,6 +14,17 @@
      Jenkins job1 : This job build the docker file and tag the image with ecr formate uploadable and upload image to the ecr
      Jenkins Job2 : This job init and apply the (IAC) terrform code to deploy basic infra and spin up container in the ECS cluster
      ![image](https://user-images.githubusercontent.com/5584558/173242673-58fb0d06-02cc-4deb-8a7c-a12fe3cf5964.png)
+     
+     configure job1
+     
+     ![image](https://user-images.githubusercontent.com/5584558/173242785-ecc8b3cb-4f6a-4d60-b88a-1365e13e70c2.png)
+     and job 1 (rearch_docker_upload) trigger job2 (rearch_docker_app) jenkins as post build 
+     
+     ![image](https://user-images.githubusercontent.com/5584558/173242826-67c59632-0523-4bb9-abf7-9fba3c065094.png)
+      
+      Configure job2
+      ![image](https://user-images.githubusercontent.com/5584558/173242882-e0160a05-fd6e-4f90-88c7-bc44284a4e29.png)
+
 
 
 3. Prerequisites:
@@ -24,6 +35,6 @@
 
 4. How to apply execute the code and achieve task:
 
-    Its very simple . Just trigger the jenkins job 1
+    Its very simple . Just trigger the jenkins rearch_docker_upload with will build first and upload docker image to ecr and then it trigger rearch_docker_app job
     
 
