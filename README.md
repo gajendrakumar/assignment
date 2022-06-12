@@ -21,14 +21,14 @@ Once docker container started to run , when we hit secret_word request url , we 
      
      ![image](https://user-images.githubusercontent.com/5584558/173242673-58fb0d06-02cc-4deb-8a7c-a12fe3cf5964.png)
      
-     configure job1
+     configure job1 - rearch_docker_upload
      
      ![image](https://user-images.githubusercontent.com/5584558/173242785-ecc8b3cb-4f6a-4d60-b88a-1365e13e70c2.png)
      and job 1 (rearch_docker_upload) trigger job2 (rearch_docker_app) jenkins as post build 
      
      ![image](https://user-images.githubusercontent.com/5584558/173242826-67c59632-0523-4bb9-abf7-9fba3c065094.png)
       
-      Configure job2
+      Configure job2 - rearch_docker_app
       ![image](https://user-images.githubusercontent.com/5584558/173242882-e0160a05-fd6e-4f90-88c7-bc44284a4e29.png)
 
 
