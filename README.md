@@ -47,5 +47,5 @@ Once docker container started to run , when we hit secret_word request url , we 
     
 
 PS : 
-      The terraform code end to end has to be execute and ofcource need to little bit modification to get it work and i tried my best to put sollution within
+      The terraform code end to end has to be execute and ofcource need ittle bit modification to get it work and i tried my best to put sollution within
       the time i spent on the Assignment
