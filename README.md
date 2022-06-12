@@ -12,8 +12,9 @@ Once docker container started to run , when we hit secret_word request url , we 
 
 2. Overview of task:
  
-   The task achievement involves 2 steps and jenkins jobs screen shots attached for the same 
-   step 1 
+      The task achievement involves 2 steps and jenkins jobs screen shots attached for the same 
+
+
      Jenkins job1 : This job build the docker file and tag the image with ecr formate uploadable and upload image to the ecr
      
      Jenkins Job2 : This job init and apply the (IAC) terrform code to deploy basic infra and spin up container in the ECS cluster
