@@ -100,9 +100,11 @@ resource "aws_elb" "myapp-elb" {
 
   listener {
     instance_port     = 3000
-    instance_protocol = "http"
-    lb_port           = 80
-    lb_protocol       = "http"
+    instance_protocol = "https"
+    lb_port           = 443
+    lb_protocol       = "https"
+    ssl_policy = "ELBSecurityPolicy-2016-08"
+    certificate_arn = aws_iam_server_certificate.rearc-ssl-cert.arn
   }
 
   health_check {
