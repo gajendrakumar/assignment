@@ -88,6 +88,12 @@ resource "aws_ecs_service" "rearc-ecs-service" {
   }
 }
 
+resource "aws_iam_server_certificate" "rearc-ssl-cert" {
+  name = "rearc-quest-ssl-cert"
+  certificate_body = file("rearc_cert/cert.pem")
+  private_key = file("rearc_cert/key.pem")
+}
+
 # load balancer
 resource "aws_elb" "myapp-elb" {
   name = "myapp-elb"
